@@ -10,7 +10,7 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# ---------- DATABASE ----------
+
 def init_ban_db():
     conn = sqlite3.connect("ban_tracker.db")
     cur = conn.cursor()
@@ -65,8 +65,7 @@ def get_recent_bans(limit=5):
     rows = cur.fetchall()
     conn.close()
     return rows
-
-# ---------- EVENTS ----------
+=
 @bot.event
 async def on_ready():
     print("BOT ONLINE")
@@ -96,7 +95,7 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-# ---------- COMMANDS ----------
+
 @bot.command()
 async def ping(ctx):
     await ctx.send("Pong!")
@@ -120,5 +119,5 @@ async def recentbans(ctx):
 
     await ctx.send(f"Recent bans:\n{msg}")
 
-# ---------- START BOT ----------
+
 bot.run(os.getenv("DISCORD_TOKEN"))
