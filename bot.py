@@ -65,7 +65,7 @@ def get_recent_bans(limit=5):
     rows = cur.fetchall()
     conn.close()
     return rows
-=
+    
 @bot.event
 async def on_ready():
     print("BOT ONLINE")
